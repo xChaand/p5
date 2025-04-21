@@ -11,12 +11,12 @@ import java_cup.runtime.*;
 
 public class P5 {
     public static void main(String[] args)
-        throws IOException // may be thrown by the scanner
+            throws IOException // may be thrown by the scanner
     {
         // check for command-line args
         if (args.length != 2) {
             System.err.println("please supply name of file to be parsed " +
-			                   "and name of file for unparsed version");
+                    "and name of file for unparsed version");
             System.exit(-1);
         }
 
@@ -35,7 +35,7 @@ public class P5 {
             outFile = new PrintWriter(args[1]);
         } catch (FileNotFoundException ex) {
             System.err.println("file " + args[1] +
-                               " could not be opened for writing");
+                    " could not be opened for writing");
             System.exit(-1);
         }
 
@@ -47,16 +47,17 @@ public class P5 {
 
         try {
             root = P.parse(); // do the parse
-            System.out.println ("program parsed correctly");
-        } catch (Exception ex){
+            System.out.println("program parsed correctly");
+        } catch (Exception ex) {
             System.err.println("exception occured during parse: " + ex);
             System.exit(-1);
         }
-		
-        ((ProgramNode)root.value).nameAnalysis();  // perform name analysis
 
-        if (!ErrMsg.getErr()) {  // if no errors, unparse
-            ((ASTnode)root.value).unparse(outFile, 0);
+        ((ProgramNode) root.value).nameAnalysis(); // perform name analysis
+        ((ProgramNode) root.value).checkType();
+
+        if (!ErrMsg.getErr()) { // if no errors, unparse
+            ((ASTnode) root.value).unparse(outFile, 0);
         }
         outFile.close();
 
