@@ -56,7 +56,7 @@ SymTabEmptyException.class: SymTabEmptyException.java
 
 ##test
 test:
-	java -cp $(CP) P5 typeErrors.bach typeErrors.out
+	java -cp $(CP) P5 typeErrors.bach typeErrors.out 
 	java -cp $(CP) P5 test.bach test.out
 
 ###

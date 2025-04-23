@@ -1,42 +1,59 @@
-boolean bbb.
-struct R [ integer a. ]
-struct R q.
+integer a.
+boolean b.
+struct C [
+    integer c1.
+    boolean c2.
+]
+void d[integer p1, boolean p2] [
+]
 
-void f[integer p1, boolean p2] [
+integer e[integer p1, boolean p2] [
+    return p1.
+]
+
+boolean f[boolean p1, boolean p2] [
+    return p1.
 ]
 
 void main[] [
-    integer aaa.
-
-    # some errors involving illegal operations on functions
-    aaa = f + f.
-    bbb = f == 3.
-    bbb = f > main.
-    bbb = f == f.
-
-    # some errors involving bad function calls 
-    aaa().
-    f().
-    f(5).
-    f(aaa, aaa).
-    f(q, q:a).
-    R().
-
-    # some errors involving structs 
-    q = 5.
-    q = q.
-    input -> R.
-    q = TRUE | 3.
-    bbb = R & q:a.
-
-    # error involving return
-    return 10.
-
-    # other type errors 
-    aaa = aaa + (^FALSE).
-    aaa = aaa + "foo".
-    bbb = aaa.
-
-    # don't give too many or too few error messages here 
-    bbb = (aaa + TRUE) & (bbb < TRUE).
+    integer w.
+    integer x.
+    boolean y.
+    boolean z.
+    struct C s.
+    s:c1 = 10.
+    s:c2 = TRUE.
+    w = 1.
+    x = 2.
+    y = TRUE.
+    z = FALSE.
+    d(x, y).
+    x = e(x, y).
+    y = f(y, y).
+    x++.
+    x--.
+    if (y) {
+        while (^z) {
+            if (y & z) {
+                y = y | z.
+                z = ^(y | z) & (z & y) | ^s:c2.
+            } else {
+                x = w + x.
+                x = w - x.
+                x = w * x.
+                x = w / x.
+            }
+        }
+    }
+    if (x == w) {
+        boolean p.
+        p = y = z.
+        p = y ^= z.
+    }
+    y = "hello" == "hello".
+    y = x <= w.
+    y = x < w.
+    y = x >= w.
+    y = x > w.
+    x = -x.
 ]

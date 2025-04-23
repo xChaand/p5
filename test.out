@@ -1,0 +1,62 @@
+integer a.
+boolean b.
+struct C [
+    integer c1.
+    boolean c2.
+]
+
+void d[integer p1, boolean p2] [
+]
+
+integer e[integer p1, boolean p2] [
+    return p1{integer}.
+]
+
+boolean f[boolean p1, boolean p2] [
+    return p1{boolean}.
+]
+
+void main[] [
+    integer w.
+    integer x.
+    boolean y.
+    boolean z.
+    struct C s.
+    (s{C}):c1{integer} = 10.
+    (s{C}):c2{boolean} = TRUE.
+    w{integer} = 1.
+    x{integer} = 2.
+    y{boolean} = TRUE.
+    z{boolean} = FALSE.
+    d{integer,boolean->void}(x{integer}, y{boolean}).
+    x{integer} = e{integer,boolean->integer}(x{integer}, y{boolean}).
+    y{boolean} = f{boolean,boolean->boolean}(y{boolean}, y{boolean}).
+    x{integer}++.
+    x{integer}--.
+    if (y{boolean}) {
+        while ((^z{boolean})) {
+            if ((y{boolean} & z{boolean})) {
+                y{boolean} = (y{boolean} | z{boolean}).
+                z{boolean} = (((^(y{boolean} | z{boolean})) & (z{boolean} & y{boolean})) | (^(s{C}):c2{boolean})).
+            }
+            else {
+                x{integer} = (w{integer} + x{integer}).
+                x{integer} = (w{integer} - x{integer}).
+                x{integer} = (w{integer} * x{integer}).
+                x{integer} = (w{integer} / x{integer}).
+            }
+        }
+    }
+    if ((x{integer} == w{integer})) {
+        boolean p.
+        p{boolean} = (y{boolean} = z{boolean}).
+        p{boolean} = (y{boolean} ^= z{boolean}).
+    }
+    y{boolean} = ("hello" == "hello").
+    y{boolean} = (x{integer} <= w{integer}).
+    y{boolean} = (x{integer} < w{integer}).
+    y{boolean} = (x{integer} >= w{integer}).
+    y{boolean} = (x{integer} > w{integer}).
+    x{integer} = (-x{integer}).
+]
+
